@@ -1,0 +1,102 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+// ======================
+// HERO BLOCK (BEM)
+// ======================
+
+.hero {
+  @include gradient-primary;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: 80px;
+  overflow: hidden;
+
+  // Element: Background overlay
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></svg>');
+    background-size: 200px;
+    opacity: 0.5;
+  }
+
+  // Element: Content wrapper
+  &__content {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-lg;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+    @include respond-to('lg') {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+
+  // Element: Text container
+  &__text {
+    // No additional styles needed, acts as a wrapper
+  }
+
+  // Element: Title
+  &__title {
+    font-size: 3rem;
+    color: $color-white;
+    margin-bottom: 20px;
+    line-height: 1.2;
+
+    @include respond-to('lg') {
+      font-size: 2.2rem;
+    }
+  }
+
+  // Element: Description
+  &__description {
+    font-size: 1.1rem;
+    color: rgba($color-white, 0.85);
+    margin-bottom: $spacing-md;
+    line-height: 1.7;
+  }
+
+  // Element: Buttons container
+  &__buttons {
+    display: flex;
+    gap: $spacing-sm;
+    flex-wrap: wrap;
+
+    @include respond-to('lg') {
+      justify-content: center;
+    }
+  }
+
+  // Element: Image container
+  &__image {
+    display: flex;
+    justify-content: center;
+
+    @include respond-to('lg') {
+      order: -1;
+    }
+  }
+
+  // Element: Image
+  &__img {
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-lg;
+    max-height: 500px;
+    object-fit: cover;
+
+    @include respond-to('lg') {
+      max-height: 350px;
+    }
+  }
+}

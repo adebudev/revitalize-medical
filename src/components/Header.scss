@@ -1,0 +1,63 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+// ======================
+// HEADER BLOCK (BEM)
+// ======================
+
+.header {
+  background-color: $color-primary-dark;
+  padding: $spacing-sm 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+
+  // Element: Content wrapper
+  &__content {
+    @include flex-between;
+    @include container;
+  }
+
+  // Element: Logo container
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  // Element: Logo image
+  &__logo-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  // Element: Navigation
+  &__nav {
+    display: flex;
+    gap: $spacing-md;
+
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+
+  // Element: Navigation link
+  &__nav-link {
+    color: $color-white;
+    font-weight: 500;
+    transition: color $transition-normal;
+
+    &:hover {
+      color: $color-accent-teal;
+    }
+  }
+
+  // Element: CTA button
+  &__cta {
+    @include respond-to('md') {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+  }
+}

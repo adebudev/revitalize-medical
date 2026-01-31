@@ -1,0 +1,72 @@
+// ======================
+// MIXINS
+// ======================
+
+@use 'variables' as *;
+
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (max-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (max-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Flexbox center
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Flexbox between
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Gradient backgrounds
+@mixin gradient-primary {
+  background: linear-gradient(135deg, $color-primary-dark 0%, $color-primary-blue 100%);
+}
+
+// Button base styles
+@mixin button-base {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: $border-radius-pill;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all $transition-normal;
+  border: none;
+  text-align: center;
+}
+
+// Container
+@mixin container {
+  max-width: $breakpoint-xl;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Section padding
+@mixin section-padding {
+  padding: $spacing-xl 0;
+}
+
+// Card hover effect
+@mixin card-hover {
+  transition: transform $transition-normal, box-shadow $transition-normal;
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  }
+}
