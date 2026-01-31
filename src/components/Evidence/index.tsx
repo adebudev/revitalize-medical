@@ -1,4 +1,4 @@
-import './Evidence.scss';
+import './styles.scss';
 
 const Evidence = () => {
   return (

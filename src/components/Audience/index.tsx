@@ -1,4 +1,4 @@
-import './Audience.scss';
+import './styles.scss';
 
 const Audience = () => {
   const audiences = [

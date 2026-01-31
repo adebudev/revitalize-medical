@@ -1,4 +1,4 @@
-import './CTA.scss';
+import './styles.scss';
 
 const CTA = () => {
   return (

@@ -1,5 +1,5 @@
-import './Mission.scss';
-import doctorImage from '../assets/images/doctor.png';
+import './styles.scss';
+import doctorImage from '../../assets/images/doctor.png';
 
 const Mission = () => {
   return (

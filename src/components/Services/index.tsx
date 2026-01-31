@@ -1,7 +1,7 @@
-import './Services.scss';
-import bloodTestIcon from '../assets/icons/blood-test.svg';
-import dirtyHandsIcon from '../assets/icons/dirty-hands.svg';
-import glovesIcon from '../assets/icons/gloves.svg';
+import './styles.scss';
+import bloodTestIcon from '../../assets/icons/blood-test.svg';
+import dirtyHandsIcon from '../../assets/icons/dirty-hands.svg';
+import glovesIcon from '../../assets/icons/gloves.svg';
 
 const Services = () => {
   const services = [
