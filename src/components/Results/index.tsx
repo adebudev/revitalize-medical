@@ -1,49 +1,56 @@
-import './styles.scss';
+import { Container } from '../shared';
+
+const results = [
+  {
+    icon: '📈',
+    title: 'Mejoría en la cicatrización',
+    description: 'Reducción significativa del tiempo de sanación'
+  },
+  {
+    icon: '📉',
+    title: 'Reducción de complicaciones',
+    description: 'Menor riesgo de infecciones y recurrencias'
+  },
+  {
+    icon: '💰',
+    title: 'Optimización de recursos',
+    description: 'Tratamientos más eficientes y económicos'
+  },
+  {
+    icon: '😊',
+    title: 'Mejora de la experiencia del paciente',
+    description: 'Mayor satisfacción y calidad de vida'
+  }
+];
 
 const Results = () => {
-  const results = [
-    {
-      icon: '📈',
-      title: 'Mejoría en la cicatrización',
-      description: 'Reducción significativa del tiempo de sanación'
-    },
-    {
-      icon: '📉',
-      title: 'Reducción de complicaciones',
-      description: 'Menor riesgo de infecciones y recurrencias'
-    },
-    {
-      icon: '💰',
-      title: 'Optimización de recursos',
-      description: 'Tratamientos más eficientes y económicos'
-    },
-    {
-      icon: '😊',
-      title: 'Mejora de la experiencia del paciente',
-      description: 'Mayor satisfacción y calidad de vida'
-    }
-  ];
-
   return (
-    <section className="results">
-      <div className="container">
-        <div className="results__header">
-          <span className="results__label">¡Resultados</span>
-          <h2 className="results__title">que importan!</h2>
+    <section className="bg-linear-to-br from-primary-dark to-primary-blue py-20">
+      <Container>
+        <div className="text-center mb-[50px]">
+          <span className="text-accent-teal text-[1.2rem] font-semibold">¡Resultados</span>
+          <h2 className="text-white text-[2.5rem] mt-[5px] font-heading font-semibold">que importan!</h2>
         </div>
         
-        <div className="results__list">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px] max-w-[900px] mx-auto">
           {results.map((item, index) => (
-            <div key={index} className="results__item">
-              <div className="results__item-icon">{item.icon}</div>
-              <div className="results__item-content">
-                <h3 className="results__item-title">{item.title}</h3>
-                <p className="results__item-description">{item.description}</p>
+            <div 
+              key={index} 
+              className="flex items-start gap-5 bg-white/10 p-[25px] rounded-[15px] backdrop-blur-sm transition-all duration-300 hover:translate-x-2.5 hover:bg-white/15"
+            >
+              <div className="text-[2.5rem] shrink-0">{item.icon}</div>
+              <div>
+                <h3 className="text-white text-[1.1rem] mb-2 font-heading font-semibold">
+                  {item.title}
+                </h3>
+                <p className="text-white/80 text-[0.95rem] leading-[1.5]">
+                  {item.description}
+                </p>
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 };
