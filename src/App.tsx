@@ -1,10 +1,11 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
+import Services from './components/Services'
 import Mission from './components/Mission'
 import Audience from './components/Audience'
+import Procedure from './components/Procedure'
 import Evidence from './components/Evidence'
 import Results from './components/Results'
-import CTA from './components/CTA'
 import Footer from './components/Footer'
 
 function App() {
@@ -13,11 +14,12 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <Services />
         <Mission />
         <Audience />
+        <Procedure />
         <Evidence />
         <Results />
-        <CTA />
       </main>
       <Footer />
     </>
