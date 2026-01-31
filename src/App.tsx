@@ -1,5 +1,6 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
+import Services from './components/Services'
 import Mission from './components/Mission'
 import Audience from './components/Audience'
 import Evidence from './components/Evidence'
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <main>
         <Hero />
+        <Services />
         <Mission />
         <Audience />
         <Evidence />

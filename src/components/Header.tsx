@@ -10,14 +10,19 @@ const Header = () => {
             alt="Revitalize Medical" 
             className="header__logo-img"
           />
+          <span className="header__brand">
+            <span className="header__brand-revitalize">Revitalize</span>
+            <span className="header__brand-medical">medical</span>
+          </span>
         </a>
         <nav className="header__nav">
           <a href="#inicio" className="header__nav-link">Inicio</a>
-          <a href="#servicios" className="header__nav-link">Servicios</a>
-          <a href="#nosotros" className="header__nav-link">Nosotros</a>
+          <a href="#que-hacemos" className="header__nav-link">Qué hacemos</a>
+          <a href="#tratamientos" className="header__nav-link">Tratamientos</a>
+          <a href="#institucional" className="header__nav-link">Institucional</a>
+          <a href="#recursos" className="header__nav-link">Recursos</a>
           <a href="#contacto" className="header__nav-link">Contacto</a>
         </nav>
-        <button className="btn btn--primary header__cta">Agendar Cita</button>
       </div>
     </header>
   );

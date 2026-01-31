@@ -1,0 +1,12 @@
+/* App.css - Estilos globales adicionales */
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll padding for fixed header */
+:target {
+  scroll-margin-top: 80px;
+}
+
