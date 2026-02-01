@@ -3,7 +3,27 @@ import hospitalImg from '../../assets/images/hospital.png';
 import nursesImg from '../../assets/images/nurses.png';
 import proyectImg from '../../assets/images/proyect.png';
 
-const audiences = [
+type AudienceItem = {
+  image: string;
+  title: string;
+  description: string;
+  accentColor: string;
+};
+
+type AudienceHeading = {
+  light: string;
+  bold: string;
+  suffix?: string;
+};
+
+type AudienceProps = {
+  id?: string;
+  heading?: AudienceHeading;
+  items?: AudienceItem[];
+  gridClassName?: string;
+};
+
+const defaultAudienceItems: AudienceItem[] = [
   {
     image: hospitalImg,
     title: 'Instituciones de salud',
@@ -24,16 +44,16 @@ const audiences = [
   }
 ];
 
-const Audience = () => {
+const Audience = ({
+  id = 'servicios',
+  items = defaultAudienceItems,
+  gridClassName = 'grid grid-cols-1 md:grid-cols-3 gap-[16px] mt-[35px] mb-[60px]',
+}: AudienceProps) => {
   return (
-    <section className="py-[66px] bg-white" id="servicios">
+    <section className="bg-white" id={id}>
       <Container>
-        <h2 className="text-left text-[2.5rem] text-primary-blue mb-2.5]">
-          <span className="font-light">¿Para quién</span> <span className="font-bold">trabajamos</span>?
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[16px] mt-[35px]">
-          {audiences.map((item, index) => (
+        <div className={gridClassName}>
+          {items.map((item, index) => (
             <Card key={index} className="flex flex-col rounded-br-3xl overflow-hidden" style={{ backgroundColor: item.accentColor }}>
               <div className="overflow-hidden">
                 <img 
@@ -44,10 +64,10 @@ const Audience = () => {
               </div>
               <div className="flex items-start gap-3">
                 <div className="p-5">
-                  <h3 className="text-[1.1rem] text-primary-dark font-heading font-semibold mb-1">
+                  <h3 className="text-[1.1rem] text-left text-primary-dark font-heading font-semibold mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-[0.95rem] text-text-light leading-[1.6]">
+                  <p className="text-[0.95rem] text-left text-text-light leading-[1.6]">
                     {item.description}
                   </p>
                 </div>

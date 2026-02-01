@@ -34,7 +34,7 @@ const Results = () => {
             </ul>
           </div>
 
-          <ImageWithElipse />
+          <ImageWithElipse positionAbsolute={true} />
 
         </div>
       </Container>

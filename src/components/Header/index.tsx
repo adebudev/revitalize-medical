@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { href: '#inicio', label: 'Inicio' },
+  { href: '/', label: 'Inicio' },
   { href: '#tratamientos', label: 'Tratamiento + tecnología' },
   { href: '/institucional', label: 'Implementación Institucional' },
   { href: '#recursos', label: 'Recursos' },
