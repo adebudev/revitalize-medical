@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 
 const navLinks = [
   { href: '#inicio', label: 'Inicio' },
-  { href: '#que-hacemos', label: 'Qué hacemos' },
-  { href: '#tratamientos', label: 'Tratamientos' },
-  { href: '#institucional', label: 'Institucional' },
+  { href: '#tratamientos', label: 'Tratamiento + tecnología' },
+  { href: '/institucional', label: 'Implementación Institucional' },
   { href: '#recursos', label: 'Recursos' },
   { href: '#contacto', label: 'Contacto' },
 ];
