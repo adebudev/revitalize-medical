@@ -1,10 +1,11 @@
+import type { CSSProperties } from "react";
 import ellipseIcon from "../../../assets/icons/ellipse.svg";
 
 import Nurse from "../../../assets/images/nurse-person.png";
 
 const ellipsePositions = (ellipseBottom: boolean) => {
   return (
-    <div className="relative hidden mt-6 w-[220px] sm:block sm:w-[260px] lg:mt-[-35px] lg:w-[260px] xl:w-[300px]">
+    <div className="relative hidden mt-6 w-[calc(220px*var(--image-scale,1))] sm:block sm:w-[calc(260px*var(--image-scale,1))] lg:mt-[-35px] lg:w-[calc(260px*var(--image-scale,1))] xl:w-[calc(300px*var(--image-scale,1))]">
       <img
         src={ellipseIcon}
         alt="Decorative ellipse"
@@ -19,18 +20,25 @@ export const ImageWithElipse = ({
   ellipseBottom = true,
   positionAbsolute = false,
   imgSrc = Nurse,
+  scale = 1,
 }: {
   ellipseBottom?: boolean;
   positionAbsolute?: boolean;
   imgSrc?: string;
+  scale?: number;
 }) => {
+  const normalizedScale = Math.max(0.5, Math.min(scale, 2));
+  const scaleStyles = {
+    "--image-scale": normalizedScale,
+  } as CSSProperties;
+
   return (
-    <div className="flex w-full justify-center lg:w-1/2">
+    <div className="flex w-full justify-center lg:w-1/2" style={scaleStyles}>
       <div className="lg:relative flex flex-col items-center">
         <div
           className={`flex flex-col items-center ${positionAbsolute ? "lg:absolute lg:top-[-280px]" : ""}`}
         >
-          <div className="z-10 mx-auto w-[200px] overflow-hidden sm:w-[240px] lg:w-[260px]">
+          <div className="z-10 mx-auto w-[calc(200px*var(--image-scale,1))] overflow-hidden sm:w-[calc(240px*var(--image-scale,1))] lg:w-[calc(260px*var(--image-scale,1))]">
             <img
               src={imgSrc}
               alt="Profesional de la salud atendiendo a una paciente"

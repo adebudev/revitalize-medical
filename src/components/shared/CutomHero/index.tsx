@@ -1,4 +1,4 @@
-export const CustomHero = ({ image = '', title = '', description = '' }: { image: string; title?: string; description?: string }) => {
+export const CustomHero = ({ image = '', title = '', description = '' }: { image?: string; title?: string; description?: string }) => {
   const imageDefault = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='0.5'/%3E%3C/svg%3E")`;
 
   return (<section

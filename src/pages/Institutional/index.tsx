@@ -1,7 +1,4 @@
-import Services from "../../components/Services";
 import Audience from "../../components/Audience";
-import Evidence from "../../components/Evidence";
-import Results from "../../components/Results";
 import ContextInstitutional from "../../components/ContextInstitutional";
 import { CustomHero } from "../../components/shared/CutomHero";
 import { CustomTitle } from "../../components/shared/CustomTitle";
@@ -10,6 +7,7 @@ import { Benefices } from "../../components/Benefices";
 import biologicalImg from "../../assets/images/biological.png";
 import protocolsImg from "../../assets/images/protocols.png";
 import formationImg from "../../assets/images/formation.png";
+import Principles from "../../components/Principles";
 
 const institutionalAudience = [
   {
@@ -53,9 +51,8 @@ const Institutional = () => {
 
       <ContextInstitutional />
       
-      <div>
-        <Services />
-      </div>
+      <Principles />
+
       <div>
         <CustomTitle
           text="COMPONENTES DE LA IMPLEMENTACIÓN"
@@ -73,8 +70,11 @@ const Institutional = () => {
         />
       </div>
       <Benefices />
-      <Evidence />
-      <Results />
+      <div className="mx-auto mt-16 mb-[220px] px-6">
+        <p className="mx-auto mt-12 text-center text-[2.25rem] leading-relaxed font-light text-[#0077B6]">
+          Respaldado por investigaciones, nuestro modelo mejora resultados y eficiencia en el cuidado de heridas.
+        </p>
+      </div>
     </>
   );
 };

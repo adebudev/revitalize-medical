@@ -9,8 +9,8 @@ const navLinks: Array<RouteLink | AnchorLink> = [
   { type: 'route', to: '/', label: 'Inicio' },
   { type: 'anchor', href: '#tratamientos', label: 'Tratamiento + tecnología' },
   { type: 'route', to: '/institucional', label: 'Implementación Institucional' },
-  { type: 'anchor', href: '#recursos', label: 'Recursos' },
-  { type: 'anchor', href: '#contacto', label: 'Contacto' },
+  { type: 'route', to: '/recursos', label: 'Recursos' },
+  { type: 'route', to: '/contacto', label: 'Contacto' },
 ];
 
 const Header = () => {

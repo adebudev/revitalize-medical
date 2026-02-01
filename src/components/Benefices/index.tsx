@@ -22,7 +22,7 @@ const targetHighlights = [
 export const Benefices = () => {
   return (
     <section className="bg-[#E8F8FF] py-16 lg:py-24" id="beneficios">
-      <Container className="flex flex-col gap-12 lg:flex-row lg:items-center">
+      <Container className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-[70px]">
         <div className="w-full lg:w-1/2">
           <CustomTitle
             text="BENEFICIOS PARA LA INSTITUCIÓN"
@@ -47,8 +47,8 @@ export const Benefices = () => {
       </Container>
 
       <Container className="bg-[#E8F8FF] mt-16 px-6 py-12">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
-          <div className="relative flex w-full justify-center">
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-center justify-center">
+          <div className="relative flex">
             <div className="">
               <ImageWithElipse imgSrc={HospitalCenter} />
             </div>
