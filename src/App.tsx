@@ -1,25 +1,18 @@
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import Mission from './components/Mission'
-import Audience from './components/Audience'
-import Procedure from './components/Procedure'
-import Evidence from './components/Evidence'
-import Results from './components/Results'
 import Footer from './components/Footer'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
     <>
       <Header />
       <main>
-        <Hero />
-        <Services />
-        <Mission />
-        <Audience />
-        <Procedure />
-        <Evidence />
-        <Results />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
       <Footer />
     </>
