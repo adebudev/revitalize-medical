@@ -14,7 +14,7 @@ const Mission = () => {
             <span className="text-[3rem] font-bold text-primary-blue italic leading-[0] align-middle ml-0.5">"</span>
           </blockquote>
         </div>
-        <div className="shrink-0 relative flex items-center justify-center lg:order-none order-first">
+        <div className="shrink-0 relative flex items-center justify-center">
           {/* Background arc */}
           <div className="absolute w-[180px] h-[220px] lg:w-[332px] lg:h-[416px] bg-[#FAF2E9] rounded-t-full z-0" />
           <img 
