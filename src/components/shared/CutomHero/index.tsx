@@ -26,12 +26,12 @@ export const CustomHero = ({ image = '', title = '', description = '' }: { image
       {/* Overlay gradient keeps text legible over photos */}
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="max-w-[842px] mx-auto px-5 pb-[119px] pt-[216px] grid grid-cols-1 place-items-center text-center relative z-10">
+      <div className="max-w-[842px] max-h-[480px] mx-auto py-[100px] grid grid-cols-1 place-items-center text-center relative z-10">
         <div className="flex flex-col items-center text-center">
           <h1 className="text-[3rem] text-white mb-5 font-heading font-[700] [text-shadow:0px_4px_4px_#00000040]">
             {title}
           </h1>
-          <p className="text-[2.25rem] text-white mb-[30px] [text-shadow:0px_4px_4px_#00000040]">
+          <p className="text-[2rem] text-white mb-[30px] [text-shadow:0px_4px_4px_#00000040]">
             {description}
           </p>
         </div>

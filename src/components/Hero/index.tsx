@@ -4,7 +4,7 @@ import { Button } from '../shared';
 const Hero = () => {
   return (
     <section 
-      className="min-h-screen flex items-center relative pt-20 overflow-hidden"
+      className="flex items-center relative overflow-hidden max-h-[600px] pt-[250px] pb-[150px]"
       id="inicio"
     >
       <video
@@ -17,7 +17,7 @@ const Hero = () => {
       />
       <div className="absolute bg-primary-dark/60" />
       
-      <div className="max-w-[1300px] mx-auto px-5 pb-[112px] pt-[75px] grid grid-cols-1 lg:grid-cols-2 gap-[30px] items-center relative z-10">
+      <div className="max-w-[1200px] mx-auto px-5 pb-[112px] pt-[75px] grid grid-cols-1 lg:grid-cols-2 gap-[30px] items-center relative z-10">
         <div className="lg:text-left text-center">
           <h1 className="text-[3rem] text-white mb-5 leading-[1.2] font-heading font-[700] [text-shadow:0px_4px_4px_#00000040]">
             Tratamiento avanzado<br/>para heridas complejas

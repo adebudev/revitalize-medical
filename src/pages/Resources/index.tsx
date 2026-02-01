@@ -4,6 +4,7 @@ import { CustomHero } from "../../components/shared/CutomHero";
 import evidenceImage from "../../assets/images/mask-doctor.png";
 import downloadIcon from "../../assets/icons/download.svg";
 import resourcesImage from "../../assets/images/recursos.jpg";
+import { Card } from "../../components/shared";
 
 type ResourceItem = {
   id: number;
@@ -55,10 +56,7 @@ const Resources = () => {
         <Container className="flex flex-col gap-12">
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3 mb-[30px]">
             {resourcesList.map((resource) => (
-              <article
-                key={resource.id}
-                className="bg-[#CAF0F8] border border-[#e2e8f0] flex flex-col overflow-hidden"
-              >
+              <Card key={resource.id}>
                 <div className="relative">
                   <img
                     src={resource.image}
@@ -84,7 +82,7 @@ const Resources = () => {
                     </button>
                   </div>
                 </div>
-              </article>
+              </Card>
             ))}
           </div>
 
