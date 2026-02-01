@@ -2,9 +2,9 @@ import type { FormEvent, ReactElement } from "react";
 import Container from "../../components/shared/Container";
 import Button from "../../components/shared/Button";
 import Card from "../../components/shared/Card";
-
-import heroContactImage from "../../assets/images/doctor.png";
 import { CustomHero } from "../../components/shared/CutomHero";
+
+import contactoImage from "../../assets/images/contacto.jpg";
 
 const LocationIcon = () => (
   <svg
@@ -117,16 +117,11 @@ const Contact = () => {
 
   return (
     <>
-      <section
-        className="relative flex items-center justify-center overflow-hidden pt-24"
-        id="contacto"
-      >
-        <CustomHero
-          image={`url(${heroContactImage})`}
-          title="Contacto"
-          description="Estamos disponibles para resolver tus dudas clínicas y acompañarte. Nuestro equipo responde de forma personalizada y confidencial para garantizar una implementación efectiva."
-        />
-      </section>
+      <CustomHero
+        image={contactoImage}
+        title="Contacto"
+        description="Estamos disponibles para resolver tus dudas clínicas y acompañarte. Nuestro equipo responde de forma personalizada y confidencial para garantizar una implementación efectiva."
+      />
 
       <section className="bg-[#f8fafc] py-16">
         <Container>
@@ -146,7 +141,7 @@ const Contact = () => {
                   {lines.map((line, index) => (
                     <li
                       key={`${line}-${index}`}
-                      className={`leading-tight ${index === lines.length - 1 ? 'underline underline-offset-4 decoration-primary-blue' : ''}`}
+                      className={`leading-tight ${index === lines.length - 1 ? "underline underline-offset-4 decoration-primary-blue" : ""}`}
                     >
                       {line}
                     </li>

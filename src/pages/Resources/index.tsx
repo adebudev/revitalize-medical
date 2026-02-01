@@ -1,9 +1,9 @@
 import Container from "../../components/shared/Container";
 import { CustomHero } from "../../components/shared/CutomHero";
 
-import heroBackground from "../../assets/images/context.png";
 import evidenceImage from "../../assets/images/mask-doctor.png";
 import downloadIcon from "../../assets/icons/download.svg";
+import resourcesImage from "../../assets/images/recursos.jpg";
 
 type ResourceItem = {
   id: number;
@@ -14,7 +14,6 @@ type ResourceItem = {
 };
 
 const heroContent = {
-  image: `url(${heroBackground})`,
   title: "Evidencias",
   description: "Documentación clínica, científica y técnica disponible en formato PDF.",
 };
@@ -47,7 +46,7 @@ const Resources = () => {
   return (
     <>
       <CustomHero
-        image={heroContent.image}
+        image={resourcesImage}
         title={heroContent.title}
         description={heroContent.description}
       />
@@ -89,7 +88,7 @@ const Resources = () => {
             ))}
           </div>
 
-          <p className="text-center text-sm text-[#475569] italic max-w-4xl mx-auto mb-[130px]">
+          <p className="text-center text-[1rem] text-[#475569] italic max-w-4xl mx-auto mb-[130px]">
             La información contenida en estos documentos está dirigida exclusivamente a profesionales de la salud y no sustituye el criterio clínico.
           </p>
         </Container>

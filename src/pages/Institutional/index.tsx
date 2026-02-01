@@ -8,6 +8,7 @@ import biologicalImg from "../../assets/images/biological.png";
 import protocolsImg from "../../assets/images/protocols.png";
 import formationImg from "../../assets/images/formation.png";
 import Principles from "../../components/Principles";
+import implementacionImage from "../../assets/images/implementacion.jpg";
 
 const institutionalAudience = [
   {
@@ -44,7 +45,7 @@ const Institutional = () => {
   return (
     <>
       <CustomHero
-        image={hero.image}
+        image={implementacionImage}
         title={hero.title}
         description={hero.description}
       />

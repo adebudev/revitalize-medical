@@ -1,5 +1,5 @@
-import { Button, Card, Container } from '../shared';
-import revitalizeIcon from '../../assets/icons/revitalize.svg';
+import { Button, Card, Container } from "../shared";
+import revitalizeIcon from "../../assets/icons/revitalize.svg";
 
 const PhoneIcon = () => (
   <svg
@@ -45,12 +45,13 @@ const Footer = () => {
     <footer className="bg-[#374151] pt-[180px] pb-8" id="contacto">
       {/* CTA Card - Positioned to overlap the top of the footer */}
       <div className="absolute left-1/2 -translate-x-1/2 -translate-y-[calc(100%--80px)] w-full max-w-[1183px] px-4">
-        <Card 
+        <Card
           className="w-full min-h-[220px] shadow-[0_10px_40px_rgba(0,0,0,0.1)] flex flex-col items-center justify-center py-12 px-6"
           hover={false}
         >
           <h3 className="text-[1.5rem] md:text-[1.75rem] font-[400] text-center text-gray-800 mb-2">
-            ¿Quieres <span className="font-bold">saber</span> cómo <span className="font-bold">implementar</span>
+            ¿Quieres <span className="font-bold">saber</span> cómo{" "}
+            <span className="font-bold">implementar</span>
           </h3>
           <h3 className="text-[1.5rem] md:text-[1.75rem] font-[400]  text-center text-gray-800 mb-4">
             Nuestro tratamiento?
@@ -58,7 +59,11 @@ const Footer = () => {
           <p className="text-gray-500 text-center text-sm mb-6">
             Te acompañamos desde la evaluación hasta la implementación.
           </p>
-          <Button variant="primary" size="lg" className="px-10 py-4 text-base rounded-md absolute left-1/2 top-[calc(100%-30px)] -translate-x-1/2">
+          <Button
+            variant="primary"
+            size="lg"
+            className="px-10 py-4 text-base rounded-md absolute left-1/2 top-[calc(100%-30px)] -translate-x-1/2"
+          >
             Contactar a un especialista
           </Button>
         </Card>
@@ -74,33 +79,38 @@ const Footer = () => {
                 className="h-[41px] w-[41px] object-contain"
               />
               <span className="flex text-[24px] leading-[36px] tracking-[0.3px]">
-                <span className="font-heading font-medium text-white">Revitalize</span>
+                <span className="font-heading font-medium text-white">
+                  Revitalize
+                </span>
                 <span className="font-light text-gray-400">medical</span>
               </span>
             </div>
-            <p className="text-[14px] text-white/80">
-              Soluciones clínicas e institucionales que mejoran la cicatrización y optimizan los recursos en salud.
-            </p>
-            <div className="h-[3px] w-[180px] rounded-full bg-white/70"></div>
+            <div className="ml-12">
+              <p className="text-[14px] text-white/80">
+                Soluciones clínicas e institucionales que mejoran la
+                cicatrización y optimizan los recursos en salud.
+              </p>
+              <div className="h-[3px] w-[180px] mt-[24px] rounded-full bg-white"></div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-5 text-white items-start">
             <div className="flex items-start gap-4">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
                 <PhoneIcon />
               </span>
-              <p className="text-[1.25rem] tracking-[0.2px]">+411 364 765</p>
+              <p className="text-[18px] tracking-[0.2px]">+411 364 765</p>
             </div>
             <div className="flex items-start gap-4">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/15">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/15">
                 <LocationIcon />
               </span>
-              <div className="text-[1.05rem] leading-[1.7] text-white">
+              <div className="text-[18px] leading-[1.7] text-white">
                 <p>850 NW 42 Ave suite 406</p>
                 <p>Miami 33126</p>
               </div>
             </div>
-            <div className="h-[3px] w-[180px] rounded-full bg-white/70 md:ml-auto"></div>
+            <div className="h-[3px] w-[180px] rounded-full bg-white md:ml-10"></div>
           </div>
         </div>
       </Container>

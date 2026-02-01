@@ -1,19 +1,21 @@
+import heroVideo from '../../assets/videos/video_medical.mp4';
 import { Button } from '../shared';
 
 const Hero = () => {
   return (
     <section 
-      className="bg-linear-to-br from-primary-dark to-primary-blue min-h-screen flex items-center relative pt-20 overflow-hidden"
+      className="min-h-screen flex items-center relative pt-20 overflow-hidden"
       id="inicio"
     >
-      {/* Overlay pattern */}
-      <div 
-        className="absolute inset-0 opacity-50 pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='0.5'/%3E%3C/svg%3E")`,
-          backgroundSize: '200px',
-        }}
+      <video
+        className="absolute h-full w-full object-cover"
+        src={heroVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
       />
+      <div className="absolute bg-primary-dark/60" />
       
       <div className="max-w-[1300px] mx-auto px-5 pb-[112px] pt-[75px] grid grid-cols-1 lg:grid-cols-2 gap-[30px] items-center relative z-10">
         <div className="lg:text-left text-center">
