@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import MedicalColor from '../../assets/icons/medical-color.svg';
 
 type RouteLink = { type: 'route'; to: string; label: string };
@@ -7,7 +7,7 @@ type AnchorLink = { type: 'anchor'; href: string; label: string };
 
 const navLinks: Array<RouteLink | AnchorLink> = [
   { type: 'route', to: '/', label: 'Inicio' },
-  { type: 'anchor', href: '#tratamientos', label: 'Tratamiento + tecnología' },
+  { type: 'route', to: '/tratamiento-tecnologia', label: 'Tratamiento + tecnología' },
   { type: 'route', to: '/institucional', label: 'Implementación Institucional' },
   { type: 'route', to: '/recursos', label: 'Recursos' },
   { type: 'route', to: '/contacto', label: 'Contacto' },
@@ -15,6 +15,18 @@ const navLinks: Array<RouteLink | AnchorLink> = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { pathname, hash } = useLocation();
+
+  const isLinkActive = useMemo(
+    () =>
+      (link: RouteLink | AnchorLink) => {
+        if (link.type === 'route') {
+          return pathname === link.to;
+        }
+        return pathname === '/' && hash === link.href;
+      },
+    [pathname, hash]
+  );
 
   // Cerrar menú al hacer resize a pantalla grande
   useEffect(() => {
@@ -89,27 +101,28 @@ const Header = () => {
         {/* Navegación desktop */}
         <nav className="hidden lg:flex">
           {navLinks.map((link, index) => {
-            const commonClasses = `
-              relative font-inter font-medium text-[16px] leading-[24px] tracking-[0.15px]
-              text-text-dark py-[10px] transition-all duration-200 ease-in-out
-              hover:text-primary-blue
+            const isActive = isLinkActive(link);
+            const desktopBase = `relative font-inter font-medium text-[16px] leading-[24px] tracking-[0.15px]
+              py-[10px] transition-all duration-200 ease-in-out hover:text-primary-blue
               after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2
               after:w-0 after:h-[3px] after:bg-accent-light after:rounded-[2px] after:transition-all after:duration-200
-              after:shadow-[0_2px_8px_rgba(144,224,239,0.6)]
-              hover:after:w-[80%]
+              after:shadow-[0_2px_8px_rgba(144,224,239,0.6)] hover:after:w-[80%]
               ${index === navLinks.length - 1 ? 'pl-[25px] pr-0' : 'px-[25px]'}
             `;
+            const desktopClasses = `${desktopBase} ${
+              isActive ? 'text-primary-blue font-semibold after:w-[80%]' : 'text-text-dark'
+            }`;
 
             if (link.type === 'route') {
               return (
-                <Link key={link.to} to={link.to} className={commonClasses}>
+                <Link key={link.to} to={link.to} className={desktopClasses}>
                   {link.label}
                 </Link>
               );
             }
 
             return (
-              <a key={link.href} href={link.href} className={commonClasses}>
+              <a key={link.href} href={link.href} className={desktopClasses}>
                 {link.label}
               </a>
             );
@@ -123,11 +136,13 @@ const Header = () => {
             ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
         >
           {navLinks.map((link) => {
-            const mobileClasses = `
-              font-inter font-medium text-[18px] leading-[28px] tracking-[0.15px]
-              text-text-dark py-4 border-b border-gray-100 transition-all duration-200 ease-in-out
-              hover:text-primary-blue hover:pl-2
-            `;
+            const isActive = isLinkActive(link);
+            const mobileBase = `font-inter font-medium text-[18px] leading-[28px] tracking-[0.15px]
+              py-4 border-b border-gray-100 transition-all duration-200 ease-in-out
+              hover:text-primary-blue hover:pl-2`;
+            const mobileClasses = `${mobileBase} ${
+              isActive ? 'text-primary-blue font-semibold' : 'text-text-dark'
+            }`;
 
             if (link.type === 'route') {
               return (
