@@ -6,6 +6,7 @@ import NotFound from './pages/NotFound'
 import Institutional from './pages/Institutional'
 import Resources from './pages/Resources'
 import Contact from './pages/Contact'
+import TreatmentTechnology from './pages/TreatmentTechnology'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/tratamiento-tecnologia" element={<TreatmentTechnology />} />
           <Route path="/institucional" element={<Institutional />} />
           <Route path="/recursos" element={<Resources />} />
           <Route path="/contacto" element={<Contact />} />

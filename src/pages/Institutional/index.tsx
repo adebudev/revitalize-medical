@@ -1,5 +1,6 @@
 import Audience from "../../components/Audience";
 import ContextInstitutional from "../../components/ContextInstitutional";
+import Container from "../../components/shared/Container";
 import { CustomHero } from "../../components/shared/CutomHero";
 import { CustomTitle } from "../../components/shared/CustomTitle";
 import { Benefices } from "../../components/Benefices";
@@ -51,15 +52,18 @@ const Institutional = () => {
       />
 
       <ContextInstitutional />
-      
+
       <Principles />
 
-      <div>
-        <CustomTitle
-          text="COMPONENTES DE LA IMPLEMENTACIÓN"
-          underlineText="Componentes"
-          description=" clave del proceso de implementación"
-        />
+      <section className="py-12">
+        <Container>
+          <CustomTitle
+            text="COMPONENTES DE LA IMPLEMENTACIÓN"
+            underlineText="Componentes"
+            description=" clave del proceso de implementación"
+            classContainer="px-0 mb-8 text-center md:text-left"
+          />
+        </Container>
         <Audience
           id="implementacion"
           heading={{
@@ -68,14 +72,15 @@ const Institutional = () => {
             suffix: "?",
           }}
           items={institutionalAudience}
+          gridClassName="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-8 mb-12"
         />
-      </div>
+      </section>
       <Benefices />
-      <div className="mx-auto mt-16 mb-[220px] px-6">
-        <p className="mx-auto mt-12 text-center text-[2.25rem] leading-relaxed font-light text-[#0077B6]">
+      <section className="px-6 md:px-12 lg:px-0 mt-16 mb-20 md:mb-32">
+        <p className="mx-auto max-w-4xl text-center text-[1.5rem] md:text-[2.25rem] leading-relaxed font-light text-[#0077B6]">
           Respaldado por investigaciones, nuestro modelo mejora resultados y eficiencia en el cuidado de heridas.
         </p>
-      </div>
+      </section>
     </>
   );
 };

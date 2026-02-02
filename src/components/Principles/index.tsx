@@ -36,30 +36,28 @@ const institutionalPrincipies = [
 const Principles = () => {
   return (
     <section className="bg-[#00A9C9] py-[60px] md:py-[85px]">
+      <Container>
+        <CustomTitle
+          text="PRINCIPIOS QUE SUSTENTAN NUESTRO MODELO"
+          underlineText="Fundamentos"
+          description=" de nuestro enfoque institucional"
+          textColor="text-white"
+          classContainer="px-0 mb-10 text-center md:text-left"
+        />
 
-      <CustomTitle
-        text="PRINCIPIOS QUE SUSTENTAN NUESTRO MODELO"
-        underlineText="Fundamentos"
-        description=" de nuestro enfoque institucional"
-        textColor="text-white"
-        classContainer="mx-[100px] mb-[60px]"
-      />
-
-      <Container className="flex flex-col gap-[40px] md:flex-row md:items-start md:gap-[80px]">
-
-        <div className="flex-1 grid grid-cols-1 gap-x-[70px] gap-y-[35px] md:grid-cols-2 justify-items-center">
+        <div className="grid grid-cols-1 gap-x-[40px] gap-y-[35px] md:grid-cols-2">
           {institutionalPrincipies.map((service) => (
-            <article key={service.title} className="flex items-start gap-[18px] text-white">
+            <article key={service.title} className="flex items-start gap-4 text-white">
               <img
                 src={service.icon}
                 alt={service.title}
                 className="mt-1 h-[60px] w-[60px] object-contain"
               />
-              <div className="space-y-3 max-w-[280px]">
+              <div className="max-w-[320px] space-y-3">
                 <h3 className="text-[1.1rem] font-bold leading-tight">
                   {service.title}
                 </h3>
-                <p className="text-[0.95rem] leading-[1.5] text-white/90">
+                <p className="text-[0.95rem] leading-[1.6] text-white/90">
                   {service.description}
                 </p>
               </div>

@@ -19,19 +19,19 @@ export const CustomHero = ({ image = '', title = '', description = '' }: { image
 
   return (
     <section
-      className="flex items-center relative pt-20 overflow-hidden"
+      className="relative flex min-h-[484px] w-full items-center overflow-hidden"
       id="institucional"
       style={withImageStyles || fallbackStyles}
     >
       {/* Overlay gradient keeps text legible over photos */}
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="max-w-[842px] max-h-[480px] mx-auto py-[100px] grid grid-cols-1 place-items-center text-center relative z-10">
-        <div className="flex flex-col items-center text-center">
-          <h1 className="text-[3rem] text-white mb-5 font-heading font-[700] [text-shadow:0px_4px_4px_#00000040]">
+      <div className="relative z-10 w-full px-6 py-12 sm:py-16 md:py-20">
+        <div className="mx-auto grid max-w-[842px] place-items-center gap-6 text-center">
+          <h1 className="text-white text-3xl sm:text-4xl lg:text-[3.5rem] leading-tight font-heading font-[700] [text-shadow:0px_4px_4px_#00000040]">
             {title}
           </h1>
-          <p className="text-[2rem] text-white mb-[30px] [text-shadow:0px_4px_4px_#00000040]">
+          <p className="text-white text-xl sm:text-2xl lg:text-[2rem] leading-relaxed whitespace-pre-line [text-shadow:0px_4px_4px_#00000040]">
             {description}
           </p>
         </div>
