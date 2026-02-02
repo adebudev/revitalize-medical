@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CustomHero } from "../../components/shared/CutomHero";
 import { Card, Container } from "../../components/shared";
 
@@ -5,7 +6,6 @@ import tratamientoImage from "../../assets/images/tratamientos.jpg";
 
 import piesImage from "../../assets/images/pie.png";
 import manoImage from "../../assets/images/mano.png";
-import tejidoImage from "../../assets/icons/berruga.svg";
 import pielHerida from "../../assets/images/piel-herida.png";
 import faseUnoImage from "../../assets/images/fase1.png";
 import faseDosImage from "../../assets/images/fase2.png";
@@ -13,6 +13,10 @@ import checkIcon from "../../assets/icons/check.svg";
 import cavitacionIcon from "../../assets/icons/cavitacion.svg";
 import neurologyIcon from "../../assets/icons/neurology.svg";
 import ensureIcon from "../../assets/icons/ensure.svg";
+import arrowRightIcon from "../../assets/icons/arrow-right.svg";
+import arrowLeftIcon from "../../assets/icons/arrow-left.svg";
+
+import animacionTratamiento from "../../assets/videos/animacion-tratamiento.mp4";
 
 type Phase = {
   id: string;
@@ -20,6 +24,8 @@ type Phase = {
   title: string;
   subtitle: string;
   description: string;
+  subtitle2?: string;
+  description2?: string;
   benefits: string[];
   image: string;
   imageAlt: string;
@@ -73,7 +79,7 @@ const highlights = [
   },
 ];
 
-const phases: Phase[] = [
+const phasesSlider: Phase[] = [
   {
     id: "fase-1",
     number: "1",
@@ -81,6 +87,8 @@ const phases: Phase[] = [
     subtitle: "Debridación ultrasónica de baja frecuencia (Qoustic – 35 kHz)",
     description:
       "Tecnología de ultrasonido diseñada para limpiar la herida, remover tejido no viable y reducir la carga biológica, preservando el tejido sano.",
+    subtitle2: "",
+    description2: "",
     benefits: [
       "Debridación selectiva y controlada",
       "Eliminación de biofilm bacteriano",
@@ -95,32 +103,60 @@ const phases: Phase[] = [
     imageClass: "w-[876px] h-[727px] rotate-[8.53deg] -ml-[231px]",
   },
   {
-    id: "fase-2",
-    number: "2",
-    title: "Regeneración tisular (AmchoPlast)",
-    subtitle: "Tecnología biológica avanzada",
+    id: "fase-1-slide-2",
+    number: "1",
+    title: "¿Cómo actúa la tecnología Qoustic?",
+    subtitle: "Corriente acústica",
     description:
-      "Aloinjerto biológico tricapa derivado de membrana placentaria humana, diseñado para apoyar la regeneración del tejido.",
-    benefits: [
-      "Andamio biológico estructural",
-      "Favorece migración e integración celular",
-      "Modula inflamación crónica",
-      "Estimula angiogénesis y reparación tisular",
-    ],
-    image: faseDosImage,
-    imageAlt: "Representación de regeneración tisular",
-    background: "bg-[#F0F6FF]",
+      "Movimiento de fluido que contribuye a remover desechos y bacterias fragmentadas.",
+    subtitle2: "Corriente acústica ",
+    description2:
+      "Movimiento de fluido que contribuye a remover desechos y bacterias fragmentadas.",
+    benefits: [],
+    image: faseUnoImage,
+    imageAlt: "Dispositivo de debridación ultrasónica",
+    background: "bg-[#E8F4FF]",
     imagePosition: "left",
+    imageClass: "w-[876px] h-[727px] rotate-[8.53deg] -ml-[231px]",
   },
 ];
 
+const fase2 = {
+  id: "fase-2",
+  number: "2",
+  title: "Regeneración tisular (AmchoPlast)",
+  subtitle: "Tecnología biológica avanzada",
+  description:
+    "Aloinjerto biológico tricapa derivado de membrana placentaria humana, diseñado para apoyar la regeneración del tejido.",
+  benefits: [
+    "Andamio biológico estructural",
+    "Favorece migración e integración celular",
+    "Modula inflamación crónica",
+    "Estimula angiogénesis y reparación tisular",
+  ],
+  image: faseDosImage,
+  imageAlt: "Representación de regeneración tisular",
+  background: "bg-[#F0F6FF]",
+  imagePosition: "left",
+};
+
 const TreatmentTechnology = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const handlePrevSlide = () => {
+    setActiveSlide((prev) => (prev === 0 ? phasesSlider.length - 1 : prev - 1));
+  };
+
+  const handleNextSlide = () => {
+    setActiveSlide((prev) => (prev === phasesSlider.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <>
       <CustomHero image={tratamientoImage} title="Tratamiento + tecnología" />
 
       <section className="py-16 bg-white" id="tratamientos">
-        <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] items-start">
+        <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_auto] items-start pb-[60px]">
           <div className="space-y-5 max-w-[597px]">
             <h2 className="text-[2.5rem] leading-tight font-heading font-light text-primary-blue">
               Nuestro
@@ -137,15 +173,18 @@ const TreatmentTechnology = () => {
           </div>
 
           <div className="flex w-full justify-center lg:justify-end">
-            <img
-              src={tejidoImage}
-              alt="Guantes estériles"
-              className="w-[525px] h-[282px] object-contain"
+            <video
+              className="absolute w-[525px] h-[282px] object-cover"
+              src={animacionTratamiento}
+              autoPlay
+              loop
+              muted
+              playsInline
             />
           </div>
         </Container>
 
-        <Container className="mt-14">
+        <Container className="mt-16">
           <div className="grid justify-center gap-8 md:grid-cols-2 lg:grid-cols-3">
             {indicationCards.map((card) => (
               <Card
@@ -176,110 +215,192 @@ const TreatmentTechnology = () => {
         </Container>
       </section>
 
-      {phases.map((phase, index) => {
-        const isImageLeft = phase.imagePosition === "left";
+      <section
+        className={`${phasesSlider[activeSlide].background} py-16 md:py-20 overflow-hidden relative transition-colors duration-500`}
+      >
+        {/* Botón anterior - Lateral izquierdo */}
+        <button
+          onClick={handlePrevSlide}
+          className="absolute left-4 lg:left-12 top-[400px] -translate-y-1/2 z-20 flex h-14 w-14 items-center justify-center hover:scale-110 transition-all duration-300"
+          aria-label="Anterior"
+        >
+         <img src={arrowLeftIcon} alt="Anterior" />
+        </button>
 
-        return (
-          <section
-            key={phase.id}
-            className={`${phase.background} py-16 md:py-20 overflow-hidden`}
-          >
-            <Container>
-              <div className="grid items-center gap-12 lg:grid-cols-2">
-                <div
-                  className={`${
-                    isImageLeft ? "order-1" : "order-2"
-                  } flex justify-center lg:justify-start`}
-                >
-                  <img
-                    src={phase.image}
-                    alt={phase.imageAlt}
-                    className={`object-contain ${
-                      phase.imageClass || "max-w-[480px]"
-                    }`}
-                  />
-                </div>
+        {/* Botón siguiente - Lateral derecho */}
+        <button
+          onClick={handleNextSlide}
+          className="absolute right-4 lg:right-12 top-[400px] -translate-y-1/2 z-20 flex h-14 w-14 items-center justify-center hover:scale-110 transition-all duration-300"
+          aria-label="Siguiente"
+        >
+          <img src={arrowRightIcon} alt="Siguiente" />
+        </button>
 
-                <div
-                  className={`${isImageLeft ? "order-2" : "order-1"} space-y-6`}
-                >
-                  <div className="space-y-3">
-                    <div className="flex flex-wrap items-end text-primary-blue">
-                      <span className="text-[5.75rem] leading-none font-heading font-bold">
-                        {phase.number}
-                      </span>
-                      <div>
-                        <span className="text-[3rem] leading-none font-heading font-semibold">
-                          Fase
-                        </span>
-                        <p className="text-2xl italic text-primary-blue/80">
-                          {phase.title}
-                        </p>
-                      </div>
-                    </div>
+        <Container>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div className="flex justify-center lg:justify-start transition-opacity duration-500 animate-fadeIn">
+              <img
+                key={activeSlide}
+                src={phasesSlider[activeSlide].image}
+                alt={phasesSlider[activeSlide].imageAlt}
+                className={`object-contain ${phasesSlider[activeSlide].imageClass || "max-w-[480px]"}`}
+              />
+            </div>
+
+            <div className="order-2 space-y-6 transition-opacity duration-500 animate-fadeIn">
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-end text-primary-blue">
+                  <span className="text-[5.75rem] leading-none font-heading font-bold">
+                    {phasesSlider[activeSlide].number}
+                  </span>
+                  <div>
+                    <span className="text-[3rem] leading-none font-heading font-semibold">
+                      Fase
+                    </span>
+                    <p className="text-2xl italic text-primary-blue/80">
+                      {phasesSlider[activeSlide].title}
+                    </p>
                   </div>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <p className="text-xl text-primary-dark font-semibold">
+                  {phasesSlider[activeSlide].subtitle}
+                </p>
+                <p className="text-lg leading-relaxed text-[#475569]">
+                  {phasesSlider[activeSlide].description}
+                </p>
+              </div>
+              <span className="block w-16 border-b-2 border-primary-blue" />
+              {phasesSlider[activeSlide].subtitle2 &&
+                phasesSlider[activeSlide].description2 && (
                   <div className="space-y-4">
                     <p className="text-xl text-primary-dark font-semibold">
-                      {phase.subtitle}
+                      {phasesSlider[activeSlide].subtitle2}
                     </p>
                     <p className="text-lg leading-relaxed text-[#475569]">
-                      {phase.description}
+                      {phasesSlider[activeSlide].description2}
                     </p>
                   </div>
-                  <span className="block w-16 border-b-2 border-primary-blue" />
+                )}
+              {phasesSlider[activeSlide].benefits.length > 0 && (
+                <div>
+                  <p className="mb-4 text-lg font-semibold text-primary-dark">
+                    Beneficios:
+                  </p>
+                  <ul className="space-y-3">
+                    {phasesSlider[activeSlide].benefits.map((benefit) => (
+                      <li
+                        key={benefit}
+                        className="flex items-start gap-3 text-primary-dark"
+                      >
+                        <img
+                          src={checkIcon}
+                          alt=""
+                          className="w-5 h-5 mt-1"
+                          aria-hidden
+                        />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </Container>
+
+        <div className="mt-16 bg-[#00B4D8] py-12 text-white">
+          <Container className="grid gap-8 md:grid-cols-3">
+            {highlights.map((feature) => (
+              <article
+                key={feature.id}
+                className="space-y-4 flex flex-col items-center text-center"
+              >
+                <span className="inline-flex h-20 w-20 items-center justify-center">
+                  <img
+                    src={feature.icon}
+                    alt=""
+                    className="w-[70px] h-[70px]"
+                    aria-hidden
+                  />
+                </span>
+                <h4 className="text-xl font-semibold">{feature.title}</h4>
+                <p className="text-sm leading-relaxed text-white/90 max-w-[300px]">
+                  {feature.description}
+                </p>
+              </article>
+            ))}
+          </Container>
+        </div>
+      </section>
+
+      <section
+        key={fase2.id}
+        className={`${fase2.background} py-16 md:py-20 overflow-hidden`}
+      >
+        <Container>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <div
+              className={`${"order-1"} flex justify-center lg:justify-start`}
+            >
+              <img
+                src={fase2.image}
+                alt={fase2.imageAlt}
+                className={`object-contain ${"max-w-[480px]"}`}
+              />
+            </div>
+
+            <div className={`${"order-2"} space-y-6`}>
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-end text-primary-blue">
+                  <span className="text-[5.75rem] leading-none font-heading font-bold">
+                    {fase2.number}
+                  </span>
                   <div>
-                    <p className="mb-4 text-lg font-semibold text-primary-dark">
-                      Beneficios:
+                    <span className="text-[3rem] leading-none font-heading font-semibold">
+                      Fase
+                    </span>
+                    <p className="text-2xl italic text-primary-blue/80">
+                      {fase2.title}
                     </p>
-                    <ul className="space-y-3">
-                      {phase.benefits.map((benefit) => (
-                        <li
-                          key={benefit}
-                          className="flex items-start gap-3 text-primary-dark"
-                        >
-                          <img
-                            src={checkIcon}
-                            alt=""
-                            className="w-5 h-5 mt-1"
-                            aria-hidden
-                          />
-                          <span>{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               </div>
-            </Container>
-
-            {index === 0 && (
-              <div className="mt-16 bg-[#00B4D8] py-12 text-white">
-                <Container className="grid gap-8 md:grid-cols-3">
-                  {highlights.map((feature) => (
-                    <article
-                      key={feature.id}
-                      className="space-y-4 flex flex-col items-center text-center"
-                    >
-                      <span className="inline-flex h-20 w-20 items-center justify-center">
-                        <img
-                          src={feature.icon}
-                          alt=""
-                          className="w-[70px] h-[70px]"
-                          aria-hidden
-                        />
-                      </span>
-                      <h4 className="text-xl font-semibold">{feature.title}</h4>
-                      <p className="text-sm leading-relaxed text-white/90 max-w-[300px]">
-                        {feature.description}
-                      </p>
-                    </article>
-                  ))}
-                </Container>
+              <div className="space-y-4">
+                <p className="text-xl text-primary-dark font-semibold">
+                  {fase2.subtitle}
+                </p>
+                <p className="text-lg leading-relaxed text-[#475569]">
+                  {fase2.description}
+                </p>
               </div>
-            )}
-          </section>
-        );
-      })}
+              <span className="block w-16 border-b-2 border-primary-blue" />
+              <div>
+                <p className="mb-4 text-lg font-semibold text-primary-dark">
+                  Beneficios:
+                </p>
+                <ul className="space-y-3">
+                  {fase2.benefits.map((benefit) => (
+                    <li
+                      key={benefit}
+                      className="flex items-start gap-3 text-primary-dark"
+                    >
+                      <img
+                        src={checkIcon}
+                        alt=""
+                        className="w-5 h-5 mt-1"
+                        aria-hidden
+                      />
+                      <span>{benefit}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
 
       <section className="bg-[#90E0EF] py-16">
         <Container>
